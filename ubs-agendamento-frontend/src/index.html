@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Agendamento UBS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hospital-alt"></i>
+                    <h1>UBS Agendamento</h1>
+                </div>
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="search">
+                        <i class="fas fa-search"></i>
+                        Buscar Paciente
+                    </button>
+                    <button class="nav-btn" data-section="schedule">
+                        <i class="fas fa-calendar-plus"></i>
+                        Agendar Consulta
+                    </button>
+                    <button class="nav-btn" data-section="appointments">
+                        <i class="fas fa-list"></i>
+                        Consultas
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Buscar Paciente Section -->
+            <section id="search-section" class="section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-search"></i> Buscar Paciente</h2>
+                    <p>Digite o ID ou nome do paciente para buscar</p>
+                </div>
+                
+                <div class="search-form">
+                    <div class="input-group">
+                        <input type="text" id="patient-search" placeholder="Digite o ID ou nome do paciente...">
+                        <button id="search-btn" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+
+                <div id="search-results" class="results-container">
+                    <!-- Resultados da busca aparecerão aqui -->
+                </div>
+            </section>
+
+            <!-- Agendar Consulta Section -->
+            <section id="schedule-section" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-calendar-plus"></i> Agendar Consulta</h2>
+                    <p>Selecione o paciente, médico, data e horário</p>
+                </div>
+
+                <div class="schedule-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="selected-patient">Paciente Selecionado:</label>
+                            <div id="selected-patient" class="selected-info">
+                                Nenhum paciente selecionado
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="doctor-select">Médico:</label>
+                            <select id="doctor-select">
+                                <option value="">Selecione um médico...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="specialty-filter">Filtrar por Especialidade:</label>
+                            <select id="specialty-filter">
+                                <option value="">Todas as especialidades</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="appointment-date">Data:</label>
+                            <input type="date" id="appointment-date" min="">
+                        </div>
+                        <div class="form-group">
+                            <label for="appointment-time">Horário:</label>
+                            <select id="appointment-time">
+                                <option value="">Selecione um horário...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button id="schedule-btn" class="btn btn-success" disabled>
+                            <i class="fas fa-calendar-check"></i>
+                            Agendar Consulta
+                        </button>
+                        <button id="clear-form-btn" class="btn btn-secondary">
+                            <i class="fas fa-times"></i>
+                            Limpar
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Consultas Section -->
+            <section id="appointments-section" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Consultas Agendadas</h2>
+                    <p>Visualize e gerencie as consultas</p>
+                </div>
+
+                <div class="appointments-filters">
+                    <div class="filter-group">
+                        <label for="filter-date">Filtrar por Data:</label>
+                        <input type="date" id="filter-date">
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-status">Status:</label>
+                        <select id="filter-status">
+                            <option value="">Todos</option>
+                            <option value="scheduled">Agendado</option>
+                            <option value="confirmed">Confirmado</option>
+                            <option value="completed">Realizado</option>
+                            <option value="cancelled">Cancelado</option>
+                        </select>
+                    </div>
+                    <button id="filter-appointments-btn" class="btn btn-primary">
+                        <i class="fas fa-filter"></i>
+                        Filtrar
+                    </button>
+                </div>
+
+                <div id="appointments-list" class="appointments-container">
+                    <!-- Lista de consultas aparecerá aqui -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loading" class="loading-overlay">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Carregando...</p>
+            </div>
+        </div>
+
+        <!-- Modal para detalhes do paciente -->
+        <div id="patient-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Detalhes do Paciente</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="patient-details"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="select-patient-btn" class="btn btn-primary">
+                        Selecionar Paciente
+                    </button>
+                    <button class="btn btn-secondary modal-close">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

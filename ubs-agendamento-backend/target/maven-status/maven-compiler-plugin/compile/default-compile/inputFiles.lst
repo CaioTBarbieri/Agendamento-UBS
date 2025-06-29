@@ -1,0 +1,14 @@
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\config\CorsConfig.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\AgendamentoApplication.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\controller\AppointmentController.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\service\AppointmentService.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\repository\AppointmentRepository.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\controller\DoctorController.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\model\Patient.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\service\DoctorService.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\model\Doctor.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\controller\PatientController.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\repository\PatientRepository.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\repository\DoctorRepository.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\service\PatientService.java
+C:\Users\bisco\Downloads\ubs-agendamento-system\ubs-agendamento-backend\src\main\java\com\ubs\agendamento\model\Appointment.java
