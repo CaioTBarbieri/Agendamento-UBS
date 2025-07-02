@@ -39,8 +39,8 @@ public class DoctorController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<Doctor>> searchDoctorsByName(@RequestParam String name) {
-        List<Doctor> doctors = doctorService.findByName(name);
+    public ResponseEntity<List<Doctor>> searchDoctorsByNome(@RequestParam String nome) {
+        List<Doctor> doctors = doctorService.findByNome(nome);
         return ResponseEntity.ok(doctors);
     }
 

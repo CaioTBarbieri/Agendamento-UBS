@@ -26,8 +26,8 @@ public class DoctorService {
         return doctorRepository.findBySpecialtyContainingIgnoreCase(specialty);
     }
 
-    public List<Doctor> findByName(String name) {
-        return doctorRepository.findByNameContainingIgnoreCase(name);
+    public List<Doctor> findByNome(String nome) {
+        return doctorRepository.findByNameContainingIgnoreCase(nome);
     }
 
     public List<String> findAllSpecialties() {

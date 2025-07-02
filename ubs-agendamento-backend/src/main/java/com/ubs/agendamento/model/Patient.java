@@ -1,5 +1,6 @@
 package com.ubs.agendamento.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -15,7 +16,7 @@ public class Patient {
     private Long id;
 
     @NotBlank(message = "Nome é obrigatório")
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @NotBlank(message = "CPF é obrigatório")
@@ -29,6 +30,7 @@ public class Patient {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Appointment> appointments;
 
     // Construtores

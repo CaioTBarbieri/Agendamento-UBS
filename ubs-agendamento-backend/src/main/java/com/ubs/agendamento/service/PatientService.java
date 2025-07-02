@@ -26,8 +26,8 @@ public class PatientService {
         return patientRepository.findByCpf(cpf);
     }
 
-    public List<Patient> findByName(String name) {
-        return patientRepository.findByNameContainingIgnoreCase(name);
+    public List<Patient> findByNome(String nome) {
+        return patientRepository.findByNameContainingIgnoreCase(nome);
     }
 
     public List<Patient> searchPatients(String searchTerm) {

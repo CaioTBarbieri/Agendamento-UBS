@@ -50,6 +50,11 @@ class App {
             specialtyFilter.addEventListener('change', () => this.filterDoctorsBySpecialty());
         }
 
+        const appointmentTime = document.getElementById('appointment-time');
+        if (appointmentTime) {
+            appointmentTime.addEventListener('change', () => this.updateScheduleButton());
+        }
+
         // Seleção de médico e data
         const doctorSelect = document.getElementById('doctor-select');
         const appointmentDate = document.getElementById('appointment-date');
@@ -405,9 +410,9 @@ class App {
                 </button>
             </div>
         `;
-        
-        this.updateScheduleButton();
+
         this.showSection('schedule');
+        setTimeout(() => this.updateScheduleButton(), 0);
         toast.success('Paciente selecionado com sucesso');
     }
 
@@ -676,7 +681,8 @@ class App {
             }
             
             toast.success('Status da consulta atualizado com sucesso');
-            this.filterAppointments(); // Refresh display
+            await this.loadAppointments();
+            this.filterAppointments();
             
         } catch (error) {
             console.error('Erro ao atualizar status:', error);

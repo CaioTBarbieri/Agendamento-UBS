@@ -1,5 +1,6 @@
 package com.ubs.agendamento.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -16,11 +17,13 @@ public class Appointment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", nullable = false)
     @NotNull(message = "Paciente é obrigatório")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "appointments"})
     private Patient patient;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id", nullable = false)
     @NotNull(message = "Médico é obrigatório")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "appointments"})
     private Doctor doctor;
 
     @Column(name = "appointment_date", nullable = false)
